@@ -367,6 +367,9 @@ iOS 15에선 CollectionView, TableView 모두 이미지를 잘 받아왔습니�
 
 ![입력값_검증_mp4](README_IMAGES/150813149-8d6a019f-9a2c-4f01-a6b1-0483e29767a3.mp4)
 
+https://user-images.githubusercontent.com/70484506/165532090-4b249fe7-14c8-4a8f-8f00-b824db433c20.mp4
+
+
 HIG 문서에서 TextField를 통해 받은 데이터의 유효성을 실시간으로 검증하라는 내용이 있었습니다.
  따라서 기존에는 Done 버튼을 누를 때만 상품 등록 내용이 적합하게 작성되었는지 검증했지만, textField의 내용을 수정할
  때마다 유효성을 검증해야겠다고 판단했습니다.
