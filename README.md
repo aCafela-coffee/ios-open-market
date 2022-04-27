@@ -363,9 +363,9 @@ iOS 15에선 CollectionView, TableView 모두 이미지를 잘 받아왔습니�
 
 > 사용자가 입력한 정보를 잘못 입력했을 때 텍스트 필드에 인라인으로 오류 메시지를 나타낸다. 이때 오류 메시지는 레이블과 구분되는 디자인을 권장한다.https://brunch.co.kr/@chulhochoiucj0/20
 
-![README_IMAGES/150791333-e7a7cdf7-3c88-422c-954f-8f24590b675b.png]
+![입력값_검증](README_IMAGES/150791333-e7a7cdf7-3c88-422c-954f-8f24590b675b.png)
 
-![README_IMAGES/150813149-8d6a019f-9a2c-4f01-a6b1-0483e29767a3.mp4]
+![입력값_검증_mp4](README_IMAGES/150813149-8d6a019f-9a2c-4f01-a6b1-0483e29767a3.mp4)
 
 HIG 문서에서 TextField를 통해 받은 데이터의 유효성을 실시간으로 검증하라는 내용이 있었습니다.
  따라서 기존에는 Done 버튼을 누를 때만 상품 등록 내용이 적합하게 작성되었는지 검증했지만, textField의 내용을 수정할
