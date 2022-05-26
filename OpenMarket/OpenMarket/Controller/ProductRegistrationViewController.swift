@@ -86,6 +86,9 @@ class ProductRegistrationViewController: UIViewController, UINavigationControlle
             case .success(let result):
                 salesInformation = result
             case .failure(let error):
+                DispatchQueue.main.async {
+                    self.loadingActivityIndicator.removeFromSuperview()
+                }
                 self.showAlert(title: error.errorDescription, message: nil)
                 return
             }
