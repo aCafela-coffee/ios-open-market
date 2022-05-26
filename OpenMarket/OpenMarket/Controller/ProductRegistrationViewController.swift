@@ -114,7 +114,9 @@ class ProductRegistrationViewController: UIViewController, UINavigationControlle
                         self.dismiss(animated: true, completion: self.completionHandler)
                     }
                 case .failure(let error):
-                    self.loadingActivityIndicator.removeFromSuperview()
+                        DispatchQueue.main.async {
+                            self.loadingActivityIndicator.removeFromSuperview()
+                        }
                     self.showAlert(title: "등록 실패", message: error.localizedDescription)
                 }
             }
@@ -507,6 +509,9 @@ class ProductRegistrationViewController: UIViewController, UINavigationControlle
         }
         guard let descriptions = descriptions, descriptions != "상품설명" else {
             return .failure(.emptyDiscription)
+        }
+        guard images.isEmpty == false else {
+            return .failure(.emptyImage)
         }
         
         if let error = inspectFilledInput(
