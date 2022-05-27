@@ -365,10 +365,9 @@ iOS 15에선 CollectionView, TableView 모두 이미지를 잘 받아왔습니�
 
 ![입력값_검증](README_IMAGES/150791333-e7a7cdf7-3c88-422c-954f-8f24590b675b.png)
 
+![입력값_검증_gif](README_IMAGES/150813149-8d6a019f-9a2c-4f01-a6b1-0483e29767a3.gif)
+
 ![입력값_검증_mp4](README_IMAGES/150813149-8d6a019f-9a2c-4f01-a6b1-0483e29767a3.mp4)
-
-https://user-images.githubusercontent.com/70484506/165532090-4b249fe7-14c8-4a8f-8f00-b824db433c20.mp4
-
 
 HIG 문서에서 TextField를 통해 받은 데이터의 유효성을 실시간으로 검증하라는 내용이 있었습니다.
  따라서 기존에는 Done 버튼을 누를 때만 상품 등록 내용이 적합하게 작성되었는지 검증했지만, textField의 내용을 수정할
@@ -380,7 +379,7 @@ HIG 문서에서 TextField를 통해 받은 데이터의 유효성을 실시간�
 
 실시간으로 값을 점검하기 위해 위 코드를 사용하여 수정될 때마다 `textInputDidChange(_:)` 메서드가 호출될 수 있도록 했습니다.
 
-다만 TextView의 경우 addTarget 메서드가 존재하지 않아 TextView만 `UITextViewDelegate`의 메서드인 `textViewDidEndEditing` 를 호출해 사용했습니다. 해당 메서드의 경우 실시간이 아닌 TextView의 수정이 끝났을 때만 호출되는 문제가 있었는데 이는 아직 해결하지 못했습니다.
+다만 TextView의 경우 addTarget 메서드가 존재하지 않아 TextView만 `UITextViewDelegate`의 메서드인 `textViewDidEndEditing` 를 호출해 사용했습니다. 해당 메서드의 경우 실시간이 아닌 TextView의 수정이 끝났을 때만 호출되는 문제가 있었는데 이는 이후 해결했습니다.
 
 ### 4. 숫자 입력을 위한 필드의 입력값 검증
 
@@ -470,7 +469,7 @@ guard picker.isBeingDismissed == false,
 ### 8. TextView의 수정을 실시간으로 알 수 있는 방법
 
 이전 코드에서 TextView는 입력이 끝나야 유효성을 검증합니다.
-유저가 위의 텍스트 필드부터 입력했다면, 상품설명을 쓰던 유저가 텍스트 필드처럼 입력중에 검증될 것이라 예상할 것입니다. 그래서 이 상황은 혼란스러울 것입니다.
+유저가 위의 텍스트 필드부터 입력했다면, 상품설명을 쓸 때에도 입력중에 검증될 것이라 예상할 것입니다. 그래서 이 상황은 혼란스러울 것입니다.
 
 ```swift
 extension ProductRegistrationViewController: UITextViewDelegate {
@@ -506,7 +505,7 @@ iOS 15.0에서는 문제가 없었지만 iOS 14.0에선 segmented Controll을 �
 
 다만 아직 왜 이런 현상이 일어나는지는 찾지 못했습니다...🥲
 
-[151150071-36068f59-1e77-45bf-9fb2-490b434bad3c](README_IMAGES/151150071-36068f59-1e77-45bf-9fb2-490b434bad3c.mp4)
+![ios14CollectionViewBackground.gif](README_IMAGES/ios14CollectionViewBackground.gif)
 
 ### 2. 이미지 리사이즈에 메모리가 많이 필요한 문제
 
@@ -630,4 +629,4 @@ UISegmentedControl.selectedSegmentIndex must be used from main thread only
 
 아래 앱처럼 서클이 도는동안 바로 스크롤이 올라가지 않고, 잠시 멈추도록 하려 합니다.
 
-https://user-images.githubusercontent.com/70484506/151651668-6ebc2854-8e65-4d3f-a7cd-a4501d63b433.mp4
+![refreshCircle.gif](README_IMAGES/refreshCircle.gif)
