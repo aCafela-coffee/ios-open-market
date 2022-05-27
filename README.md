@@ -434,7 +434,7 @@ func cropSquare() -> UIImage? {
 
 또한 이 조건의 경우 이미지 선택이 완료되었을 때 이뤄져야 하기 때문에 **imagePickerController(_:didFinishPickingMediaWithInfo:)** 메서드에서 조건을 추가해줬습니다.
 
-![README_IMAGES/150791141-b002649c-c0ee-4abb-9478-c74357913df9.png]
+![README_IMAGES/150791141-b002649c-c0ee-4abb-9478-c74357913df9.png](README_IMAGES/150791141-b002649c-c0ee-4abb-9478-c74357913df9.png)
 
 origin의 경우 가운데로 크롭이 될 수 있도록 그림처럼 origin을 이동시켜줬습니다.
 
