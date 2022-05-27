@@ -453,7 +453,7 @@ UIImage(cgImage: squareImage, scale: 1.0, orientation: self.imageOrientation)
 
 ### 7. 이미지 피커에서 더블 클릭을 하는 경우 이미지가 2개 올라가는 문제
 
-이미지 피커가 닫히지 전에 두번 누르면, 2개 올라갑니다.
+이미지 피커가 닫히기 전에 두번 누르면, 2개 올라갑니다.
 
 이때 두번째 선택을 무시하기 위한 코드입니다.
 
