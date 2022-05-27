@@ -29,7 +29,7 @@ private static func buildBody(
 ```
 
 Parameter가 길어서 이전 줄바꿈 규칙으로 문제가 있었습니다.
-줄바꿈 규칙을 [Swift Style Guide](https://github.com/StyleShare/swift-style-guide#%EC%A4%84%EB%B0%94%EA%BF%88) 를 따르도록 변경했습니다.
+줄바꿈 규칙을 ['Swift Style Guide', StyleShare](https://github.com/StyleShare/swift-style-guide#%EC%A4%84%EB%B0%94%EA%BF%88) 를 따르도록 변경했습니다.
 
 ### 2. 구조체의 프로퍼티에 let를 사용
 
