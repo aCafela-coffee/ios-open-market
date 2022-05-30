@@ -501,15 +501,6 @@ iOS 15.0에서는 문제가 없었지만 iOS 14.0에선 segmented Controll을 �
 
 ![ios14CollectionViewBackground.gif](README_IMAGES/ios14CollectionViewBackground.gif)
 
-### 2. 이미지 리사이즈에 메모리가 많이 필요한 문제
-
-아래는 기본 꽃 사진을 5장 업로드할 때입니다. 메모리가 엄청나게 많이 듭니다. 리사이즈 횟수가 더 많은 코드에서는 7GB를 쓸 때도 있었습니다.
-swift는 ARC를 사용하므로 가비지 컬렉터와 달리 필요없는 인스턴스가 즉시 해제될 것인데, 어디서 메모리를 이렇게 쓰는 건지는 정확히 파악하지 못했습니다. 
-
-또한 iPod touch (7th generation)으로 실행을 했을 때와 iPhone으로 실행했을 때 사용하는 메모리의 양이 달랐는데 그 이유도 파악하진 못했습니다. 
-
-![150794938-96079c87-ef87-45a3-8a19-a9be01e3a729.png](README_IMAGES/150794938-96079c87-ef87-45a3-8a19-a9be01e3a729.png)
-
 # STEP 4
 
 ## 🤔 고민했던 점
@@ -624,3 +615,24 @@ UISegmentedControl.selectedSegmentIndex must be used from main thread only
 아래 앱처럼 서클이 도는동안 바로 스크롤이 올라가지 않고, 잠시 멈추도록 하려 합니다.
 
 ![refreshCircle.gif](README_IMAGES/refreshCircle.gif)
+
+# STEP 5
+
+### 1. 이미지 리사이즈에 메모리가 많이 필요한 문제
+
+이미지 업로드 전 리사이즈를 반복하는 코드가 메모리를 많이 쓰고 있었습니다. 리사이즈 횟수가 더 많은 코드에서는 7GB를 쓸 때도 있었습니다.
+
+`autoreleasepool` 함수를 사용해서 해결했습니다.
+
+```swift
+autoreleasepool {
+    let multiplier: CGFloat = 0.8
+    originalImage = originalImage.resize(multiplier: multiplier)
+    imageData = originalImage.jpegData(compressionQuality: compressionQuality)
+}
+```
+
+| 전                                                           | 후                                                           |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![before_autoreleasepool](README_IMAGES/before_autoreleasepool.png) | ![after_autoreleasepool](README_IMAGES/after_autoreleasepool.png) |
+
