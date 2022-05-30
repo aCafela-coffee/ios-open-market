@@ -619,9 +619,11 @@ class ProductRegistrationViewController: UIViewController, UINavigationControlle
         var originalImage = image
         var imageData = image.jpegData(compressionQuality: compressionQuality)
         while let bytes = imageData?.count, bytes > finalByte {
-            let multiplier: CGFloat = 0.8
-            originalImage = originalImage.resize(multiplier: multiplier)
-            imageData = originalImage.jpegData(compressionQuality: compressionQuality)
+            autoreleasepool {
+                let multiplier: CGFloat = 0.8
+                originalImage = originalImage.resize(multiplier: multiplier)
+                imageData = originalImage.jpegData(compressionQuality: compressionQuality)
+            }
         }
         return imageData
     }
