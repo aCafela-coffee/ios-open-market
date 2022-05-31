@@ -21,4 +21,8 @@ extension ProductsTableViewCell: ProductCell {
     func setup(imageView: UIImage?) {
         self.productImageView.image = imageView
     }
+    
+    func setup(imageView data: Data) throws {
+        try self.productImageView.setImage(from: data)
+    }
 }

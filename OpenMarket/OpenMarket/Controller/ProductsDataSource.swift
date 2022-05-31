@@ -39,10 +39,14 @@ class ProductsDataSource: NSObject {
         networkTask?.downloadImage(from: url) { result in
             switch result {
             case .success(let data):
-                guard let image = UIImage(data: data) else { return }
                 DispatchQueue.main.async {
                     guard indexPath == productView.indexPath(for: cell) else { return }
-                    cell.setup(imageView: image)
+                    do {
+                        try cell.setup(imageView: data)
+                    } catch {
+                        let alternativeImage = UIImage(systemName: "xmark.app")
+                        cell.setup(imageView: alternativeImage)
+                    }
                 }
             case .failure:
                 let image = UIImage(systemName: "xmark.app")
