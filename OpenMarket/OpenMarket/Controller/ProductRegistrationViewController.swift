@@ -93,9 +93,8 @@ class ProductRegistrationViewController: UIViewController, UINavigationControlle
                 return
             }
             
-            var count = 0
             var imageDatas = [String: Data]()
-            for image in self.images {
+            for (count, image) in self.images.enumerated() {
                 let fileName = "\(count).jpeg"
                 let imageData = self.convertJPEG(
                     from: image,
@@ -103,7 +102,6 @@ class ProductRegistrationViewController: UIViewController, UINavigationControlle
                     compressionQuality: 0.8
                 )
                 imageDatas[fileName] = imageData
-                count += 1
             }
             
             self.networkTask?.requestProductRegistration(
