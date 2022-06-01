@@ -644,7 +644,7 @@ while let bytes = imageData?.count, bytes > finalByte {
 }
 ```
 
-| 전                                                           | 후                                                           |
+| 전, 5.13 GB                                                  | 후, 657 MB                                                   |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ![before_autoreleasepool](README_IMAGES/before_autoreleasepool.png) | ![after_autoreleasepool](README_IMAGES/after_autoreleasepool.png) |
 
