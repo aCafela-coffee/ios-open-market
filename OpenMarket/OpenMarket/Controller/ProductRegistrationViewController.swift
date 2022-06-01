@@ -74,15 +74,19 @@ class ProductRegistrationViewController: UIViewController, UINavigationControlle
     @objc private func registerProduct() {
         startActivityIndicator()
         DispatchQueue.global().async {
-            let writtenSalesInformation = self.makeSalesInformation(
-                secret: NetworkTask.secret,
-                maximumDescriptionsLimit: 1000,
-                minimumDescriptionsLimit: 10,
-                maximumNameLimit: 100,
-                minimumNameLimit: 3
-            )
+            var writtenSalesInformation: Result<NetworkTask.SalesInformation, ProductRegistrationError>!
+            DispatchQueue.main.sync {
+                writtenSalesInformation = self.makeSalesInformation(
+                    secret: NetworkTask.secret,
+                    maximumDescriptionsLimit: 1000,
+                    minimumDescriptionsLimit: 10,
+                    maximumNameLimit: 100,
+                    minimumNameLimit: 3
+                )
+            }
+
             let salesInformation: NetworkTask.SalesInformation
-            switch writtenSalesInformation {
+            switch writtenSalesInformation! {
             case .success(let result):
                 salesInformation = result
             case .failure(let error):
