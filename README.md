@@ -622,13 +622,25 @@ UISegmentedControl.selectedSegmentIndex must be used from main thread only
 
 이미지 업로드 전 리사이즈를 반복하는 코드가 메모리를 많이 쓰고 있었습니다. 리사이즈 횟수가 더 많은 코드에서는 7GB를 쓸 때도 있었습니다.
 
-`autoreleasepool` 함수를 사용해서 해결했습니다.
+UIImage 인스턴스가 함수 종료시 까지 유지되는데, 이것을 더 일찍 해제하도록 변경했습니다.
 
 ```swift
-autoreleasepool {
+// 전
+while let bytes = imageData?.count, bytes > finalByte {
     let multiplier: CGFloat = 0.8
     originalImage = originalImage.resize(multiplier: multiplier)
     imageData = originalImage.jpegData(compressionQuality: compressionQuality)
+}
+```
+
+```swift
+// 후
+while let bytes = imageData?.count, bytes > finalByte {
+    autoreleasepool {
+        let multiplier: CGFloat = 0.8
+        originalImage = originalImage.resize(multiplier: multiplier)
+        imageData = originalImage.jpegData(compressionQuality: compressionQuality)
+    }
 }
 ```
 
