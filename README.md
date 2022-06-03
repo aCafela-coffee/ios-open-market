@@ -648,3 +648,11 @@ while let bytes = imageData?.count, bytes > finalByte {
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | ![before_autoreleasepool](README_IMAGES/before_autoreleasepool.png) | ![after_autoreleasepool](README_IMAGES/after_autoreleasepool.png) |
 
+### 2. 썸네일의 메모리 사용량 개선
+
+이미지 뷰 크기에 맞는 UIImage 인스턴스를 만들도록 수정했습니다.
+
+| 전, 40.5 MB                                                  | 후, 23.7MB                                                   |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![mainPageMemoryBefore](README_IMAGES/mainPageMemoryBefore.png) | ![mainPageMemoryAfter](README_IMAGES/mainPageMemoryAfter.png) |
+
